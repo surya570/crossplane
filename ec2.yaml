@@ -1,0 +1,16 @@
+apiVersion: ec2.aws.crossplane.io/v1alpha1
+kind: Instance
+metadata:
+  name: sample-instance
+spec:
+  forProvider:
+    region: ap-southeast-2
+    imageId: ami-051a81c2bd3e755db
+    instanceType: t2.micro
+    blockDeviceMappings:
+     - deviceName: /dev/sdx
+       ebs:
+         volumeSize: 100
+    subnetId: subnet
+  providerConfigRef:
+    name: aws-provider-config
